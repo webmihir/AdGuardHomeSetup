@@ -1,5 +1,13 @@
 #!/bin/bash
 
+if [ ${0##*/} == ${BASH_SOURCE[0]##*/} ]; then
+    echo "WARNING"
+    echo "This script is not meant to be executed directly!"
+    echo "See: https://github.com/webmihir/AdGuardHomeSetup/blob/main/README.md"
+    echo
+    exit 1
+fi
+
 source "$SCRIPT_DIR/common/lib.sh"
 
 echo "  - Upgrading apt-get packages ..."
