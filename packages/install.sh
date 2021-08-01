@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $INSTALL_DIR/common/lib.sh
+source $SCRIPT_DIR/common/lib.sh
 
 echo "  - Upgrading apt-get packages ..."
 apt-get update >/dev/null 2>&1
