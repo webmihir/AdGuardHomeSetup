@@ -1,11 +1,6 @@
 #!/bin/bash
 
-if [[ $EUID -ne 0 ]]
-then
-	echo "  - This script must be run as root."
-	echo "  - Try: sudo $0 $@"
-	exit 1
-fi
+source $INSTALL_DIR/common/lib.sh
 
 echo "  - Upgrading apt-get packages ..."
 apt-get update >/dev/null 2>&1
