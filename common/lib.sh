@@ -1,7 +1,5 @@
 #!/bin/bash
 
-check-root-access
-
 check-root-access() {
 	if [[ $EUID -ne 0 ]]
 	then
@@ -26,4 +24,6 @@ apt-get-install() {
 draw-line() {
 	echo "********** ********** ********** ********** ********** **********"
 }
+
+check-root-access
 
