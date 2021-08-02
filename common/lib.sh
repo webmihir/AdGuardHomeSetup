@@ -1,11 +1,15 @@
 #!/bin/bash
 
-if [[ $EUID -ne 0 ]]
-then
-	echo "  - This script must be run as root."
-	echo "  - Try running the command with \"sudo\"."
-	exit 1
-fi
+check-root-access
+
+check-root-access() {
+	if [[ $EUID -ne 0 ]]
+	then
+		echo "  - This script must be run as root."
+		echo "  - Try running the command with \"sudo\"."
+		exit 1
+	fi
+}
 
 apt-get-install() {
         echo "  - Checking if $1 is installed ..."

@@ -11,7 +11,12 @@ export CUR_DIR=`dirname "$(readlink -f "$0")"`
 export INSTALL_DIR=$HOME/github
 export SCRIPT_DIR=$INSTALL_DIR/AdGuardHomeSetup
 
-ADH_PASSWORD="1234"
+# TODO: Change these to query parameters
+AGH_USERNAME="admin"
+AGH_PASSWORD="1234"
+INSTALL_AGH=1
+INSTALL_SSL=1
+INSTALL_WIREGUARD=1
 
 echo "Downloading scripts from github into $HOME/github/ directory ..."
 if [ -d "$SCRIPT_DIR" ]
@@ -28,7 +33,10 @@ echo "Running Initial Setup to install required packages"
 source $SCRIPT_DIR/packages/install.sh
 
 echo "Installing AdGuardHome ..."
-source $SCRIPT_DIR/AGH/install.sh
+if [ $INSTALL_AGH -eq 1 ]
+then
+	source $SCRIPT_DIR/AGH/install.sh -u "$AGH_USERNAME" -p "$AGH_PASSWORD"
+fi
 
 popd >/dev/null 2>&1
 
