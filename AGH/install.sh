@@ -18,4 +18,3 @@ curl -s -S -L https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/s
 sleep 10
 curl 'http://localhost:3000/control/install/configure' -H 'Content-Type: application/json' --data-raw '{"web": {"ip":"0.0.0.0", "port":8001, "status": "", "can_autofix":false}, "dns": {"ip":"0.0.0.0", "port": 53, "status":"", "can_autofix":false}, "username":"'$AGH_USERNAME'", "password":"'$AGH_PASSWORD'"}'
 
-$AGH_HOME/AdGuardHome -s start
