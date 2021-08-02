@@ -14,22 +14,15 @@ echo "  - Upgrading apt-get packages ..."
 apt-get update >/dev/null 2>&1
 apt-get --yes upgrade >/dev/null 2>&1
 
-REQUIRED_PKGS="vim,python3,dnsutils,cron,snap"
+REQUIRED_PKGS="vim,python3,dnsutils,cron,snap,apache2-utils,apache2"
 
 ORIG_IFS=$IFS
 IFS=,
 for pkg in $REQUIRED_PKGS
 do
-	echo "  - ********** ********** ********** ********** ********** **********"
-	echo "  - Checking if $pkg is installed ..."
-	PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $pkg|grep "install ok installed")
-	if [ "" = "$PKG_OK" ]
-	then
-		echo "    - Package $pkg is not installed. Installing it now..."
-		apt-get --yes install $pkg >/dev/null 2>&1
-	else
-		echo "    - Package $pkg is already installed. Skipping ..."
-	fi
+	draw-line
+	apt-get-install $pkg
+	draw-line
 done
 IFS=$ORIG_IFS
 
